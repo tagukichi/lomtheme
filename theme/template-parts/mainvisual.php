@@ -61,24 +61,27 @@ $lom_multiple = count( $lom_slides ) > 1;
 				     <?php echo $lom_active ? 'fetchpriority="high"' : 'loading="lazy"'; ?>>
 			</<?php echo esc_attr( $lom_tag ); ?>>
 		<?php endforeach; ?>
+
+		<?php if ( $lom_multiple ) : ?>
+			<?php // ドットはビューポート内に置く。外に出すとサムネイルの上に重なる。 ?>
+			<div class="lom-mv__dots" role="tablist"
+			     aria-label="<?php esc_attr_e( 'スライドを選択', 'lomtheme' ); ?>">
+				<?php foreach ( $lom_slides as $lom_i => $lom_slide ) : ?>
+					<button type="button"
+					        class="lom-mv__dot<?php echo 0 === $lom_i ? ' is-active' : ''; ?>"
+					        data-lom-mv-goto="<?php echo esc_attr( (string) $lom_i ); ?>"
+					        role="tab"
+					        aria-selected="<?php echo 0 === $lom_i ? 'true' : 'false'; ?>">
+						<span class="screen-reader-text">
+							<?php echo esc_html( sprintf( /* translators: %d: スライド番号 */ __( 'スライド %d', 'lomtheme' ), $lom_i + 1 ) ); ?>
+						</span>
+					</button>
+				<?php endforeach; ?>
+			</div>
+		<?php endif; ?>
 	</div>
 
 	<?php if ( $lom_multiple ) : ?>
-		<div class="lom-mv__dots" role="tablist"
-		     aria-label="<?php esc_attr_e( 'スライドを選択', 'lomtheme' ); ?>">
-			<?php foreach ( $lom_slides as $lom_i => $lom_slide ) : ?>
-				<button type="button"
-				        class="lom-mv__dot<?php echo 0 === $lom_i ? ' is-active' : ''; ?>"
-				        data-lom-mv-goto="<?php echo esc_attr( (string) $lom_i ); ?>"
-				        role="tab"
-				        aria-selected="<?php echo 0 === $lom_i ? 'true' : 'false'; ?>">
-					<span class="screen-reader-text">
-						<?php echo esc_html( sprintf( /* translators: %d: スライド番号 */ __( 'スライド %d', 'lomtheme' ), $lom_i + 1 ) ); ?>
-					</span>
-				</button>
-			<?php endforeach; ?>
-		</div>
-
 		<div class="lom-mv__thumbs">
 			<?php foreach ( $lom_slides as $lom_i => $lom_slide ) : ?>
 				<button type="button"

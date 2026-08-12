@@ -42,6 +42,7 @@
   position: absolute;
   left: 50%;
   bottom: 14px;
+  z-index: 2;
   transform: translateX(-50%);
   display: flex;
   gap: 8px;
