@@ -31,20 +31,24 @@ JC は**毎年役員が入れ替わる**組織であり、引き継ぎのたび�
 reference/              SingleFile で保存した既存サイトHTML（解析用の入力）
   README.md             ← 保存してほしいページ一覧と手順
 tools/
-  extract_structure.py  SingleFile HTML から構造情報を抽出する
+  extract_structure.py  「何が使われているか」を抽出（プラグイン・ウィジェット等）
+  outline.py            「どう組まれているか」を出力（DOMアウトライン）
 docs/
-  01-existing-site-findings.md   既存サイトの遠隔調査メモ
-  site-analysis/                 ↑ スクリプトが生成する解析レポート
+  01-existing-site-findings.md    既存サイトの解析結果
+  02-component-inventory.md       独自コンポーネントの棚卸し
+  03-page-layout-requirements.md  固定ページのレイアウト要件
+  site-analysis/                  ↑ スクリプトが生成する解析レポート
 ```
 
 ---
 
 ## 進め方
 
-- [x] 既存サイトの遠隔調査（到達範囲での確認）
-- [x] 解析基盤の用意（取り込みスクリプト）
-- [ ] **SingleFile で既存サイトを取り込み** ← 現在ここ
-- [ ] 解析結果をもとに機能要件を確定
+- [x] 既存サイトの調査
+- [x] 解析基盤の用意
+- [x] SingleFile で既存サイトを取り込み（6ページ）
+- [x] 独自コンポーネントの棚卸し
+- [ ] **不足ページの追加取り込み（組織図・事業計画・賛助会員）** ← 現在ここ
 - [ ] テーマ設計（テンプレート階層・CPT・ACFフィールド定義）
 - [ ] 実装
 - [ ] 配布形態の設計（ライセンス・更新配信・ドキュメント）
@@ -52,8 +56,9 @@ docs/
 ### 解析の実行
 
 ```bash
-python3 tools/extract_structure.py reference/
+python3 tools/extract_structure.py reference/     # 全ページのレポート生成
+python3 tools/outline.py reference/01-home.html   # 単一ページの構造を見る
 ```
 
 `docs/site-analysis/` に、ページごとのレポートと `_summary.md`（全ページ横断の
-サイトマップ・プラグイン一覧・ウィジェット使用頻度）が生成される。
+サイトマップ・プラグイン推定・ウィジェット使用頻度）が生成される。
