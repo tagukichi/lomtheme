@@ -1,0 +1,103 @@
+/* ===========================================================================
+   投稿個別（既存サイトの jaycee-single 相当）
+
+   左にタイトルとメタ、右に主画像の2カラム。モバイルでは
+   タイトル → メタ → 画像 の順に縦積みする。
+   =========================================================================== */
+
+.lom-single__card {
+  background: var(--lom-bg);
+  border-radius: var(--lom-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--lom-shadow-card);
+  margin-bottom: 32px;
+}
+
+.lom-single__head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+}
+
+.lom-single__text { padding: 26px 26px 22px; }
+
+.lom-single__title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--lom-heading);
+}
+
+.lom-single__meta {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.lom-single__meta .lom-date {
+  font-size: 12px;
+  color: #777;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.lom-single__figure {
+  margin: 0;
+  min-height: 420px;
+  background: var(--lom-bg-muted);
+  overflow: hidden;
+}
+
+.lom-single__figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.lom-single__body { padding-bottom: 32px; }
+
+/* 画像しか無い記事でも高さが破綻しないようにする */
+.lom-single__head:not(:has(.lom-single__figure)) {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (max-width: 767px) {
+  .lom-single__head { display: flex; flex-direction: column; }
+
+  /* 親の枠を外して子要素だけを並べ替える */
+  .lom-single__text { display: contents; }
+
+  .lom-single__title {
+    order: 1;
+    font-size: 20px;
+    padding: 18px 16px 0;
+  }
+  .lom-single__meta {
+    order: 2;
+    padding: 0 16px;
+    margin-bottom: 16px;
+  }
+  .lom-single__figure {
+    order: 3;
+    width: 100%;
+    min-height: 0;
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
+}
+
+/* 前後の投稿 -------------------------------------------------------------- */
+
+.lom-postnav {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-block: 24px;
+  border-top: 1px solid var(--lom-bg-muted);
+  font-size: 13px;
+}
+
+.lom-postnav__next { margin-inline-start: auto; text-align: right; }

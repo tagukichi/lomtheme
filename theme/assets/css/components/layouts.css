@@ -1,0 +1,249 @@
+/* ===========================================================================
+   フレキシブルコンテンツの各レイアウト
+
+   docs/03-page-layout-requirements.md の7種に対応。
+   =========================================================================== */
+
+.lom-blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding-bottom: 56px;
+}
+
+/* 本文 ------------------------------------------------------------------- */
+
+.lom-prose {
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--lom-text);
+}
+
+.lom-prose > :first-child { margin-top: 0; }
+.lom-prose > :last-child { margin-bottom: 0; }
+
+.lom-prose p { margin-block: 0 1.2em; }
+.lom-prose a { text-decoration: underline; }
+
+.lom-prose ul,
+.lom-prose ol { padding-inline-start: 1.4em; margin-block: 0 1.2em; }
+
+.lom-prose img { margin-block: 1em; }
+
+.lom-prose--boxed {
+  border: 1px solid var(--lom-border);
+  border-radius: var(--lom-radius);
+  padding: 24px;
+  background: var(--lom-bg);
+}
+
+/* リード文 --------------------------------------------------------------- */
+
+.lom-lead {
+  margin: 0;
+  text-align: center;
+  font-size: clamp(17px, 2.4vw, 21px);
+  font-weight: 700;
+  line-height: 1.8;
+  color: var(--lom-heading);
+}
+
+/* ヒーロー画像 ----------------------------------------------------------- */
+
+.lom-hero {
+  margin: 0;
+  border-radius: var(--lom-radius);
+  overflow: hidden;
+  background: var(--lom-bg-muted);
+}
+
+.lom-hero img { width: 100%; }
+
+.lom-hero--wide img     { aspect-ratio: 16 / 9; object-fit: cover; }
+.lom-hero--standard img { aspect-ratio: 4 / 3;  object-fit: cover; }
+.lom-hero--portrait img { aspect-ratio: 3 / 4;  object-fit: cover; }
+.lom-hero--auto img     { aspect-ratio: auto; }
+
+.lom-hero__caption {
+  padding: 8px 4px 0;
+  font-size: 12px;
+  color: var(--lom-text-muted);
+  text-align: center;
+}
+
+/* 共通のセクション見出し --------------------------------------------------- */
+
+.lom-section__heading,
+.lom-info__heading {
+  font-size: clamp(18px, 2.6vw, 22px);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* セクション（見出し＋本文＋画像グリッド） ---------------------------------- */
+
+.lom-section {
+  background: var(--lom-bg);
+  border-radius: var(--lom-radius);
+  box-shadow: var(--lom-shadow);
+  padding: 32px 28px;
+}
+
+.lom-section__body { margin-bottom: 22px; }
+
+.lom-gallery {
+  display: grid;
+  grid-template-columns: repeat(var(--cols, 4), minmax(0, 1fr));
+  gap: 12px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.lom-gallery__item {
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--lom-bg-muted);
+}
+
+.lom-gallery__item img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.lom-section__caption {
+  margin: 16px 0 0;
+  padding: 10px 14px;
+  border: 1px solid var(--lom-border);
+  border-radius: 6px;
+  background: var(--lom-bg-muted);
+  font-size: 12.5px;
+  color: var(--lom-text-muted);
+}
+
+@media (max-width: 767px) {
+  .lom-section { padding: 22px 16px; }
+  /* 4列は狭すぎるので2列に落とす */
+  .lom-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* カード（画像＋テキスト） -------------------------------------------------- */
+
+.lom-features {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.lom-feature {
+  background: var(--lom-bg);
+  border-radius: var(--lom-radius);
+  box-shadow: var(--lom-shadow);
+  padding: 28px;
+}
+
+.lom-feature__heading {
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 22px;
+  padding-bottom: 10px;
+  position: relative;
+}
+
+/* 見出し下の短いアクセント線 */
+.lom-feature__heading::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 56px;
+  height: 2px;
+  background: var(--lom-brand);
+}
+
+.lom-feature__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 240px) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.lom-feature--image-right .lom-feature__inner {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 240px);
+}
+
+.lom-feature--image-right .lom-feature__media { order: 2; }
+
+.lom-feature__media img {
+  width: 100%;
+  border-radius: 6px;
+}
+
+@media (max-width: 767px) {
+  .lom-feature { padding: 20px 16px; }
+  .lom-feature__inner,
+  .lom-feature--image-right .lom-feature__inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .lom-feature--image-right .lom-feature__media { order: 0; }
+}
+
+/* 箇条書きボックス --------------------------------------------------------- */
+
+.lom-boxes {
+  display: grid;
+  grid-template-columns: repeat(var(--cols, 2), minmax(0, 1fr));
+  gap: 20px;
+}
+
+.lom-box {
+  background: var(--lom-bg);
+  border-radius: var(--lom-radius);
+  box-shadow: var(--lom-shadow);
+  padding: 24px;
+}
+
+.lom-box__heading {
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--lom-brand);
+}
+
+.lom-box__list {
+  margin: 0;
+  padding-inline-start: 1.3em;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+@media (max-width: 767px) {
+  .lom-boxes { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* 案内ボックス ------------------------------------------------------------ */
+
+.lom-info {
+  background: var(--lom-bg);
+  border-radius: var(--lom-radius);
+  box-shadow: var(--lom-shadow);
+  padding: 28px;
+}
+
+.lom-info__list {
+  margin: 0 0 18px;
+  padding-inline-start: 1.5em;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.lom-info__note {
+  font-size: 14px;
+}
+
+@media (max-width: 767px) {
+  .lom-info { padding: 20px 16px; }
+}

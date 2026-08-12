@@ -1,0 +1,105 @@
+/* ===========================================================================
+   メインビジュアル・スライダー（既存サイトの mvts 相当）
+   =========================================================================== */
+
+.lom-mv {
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.lom-mv__viewport {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--lom-bg-muted);
+}
+
+.lom-mv__slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease;
+}
+
+.lom-mv__slide.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lom-mv__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ドット ----------------------------------------------------------------- */
+
+.lom-mv__dots {
+  position: absolute;
+  left: 50%;
+  bottom: 14px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+.lom-mv__dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.lom-mv__dot.is-active { background: #fff; }
+
+/* サムネイル -------------------------------------------------------------- */
+
+.lom-mv__thumbs {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 0;
+  flex-wrap: wrap;
+}
+
+.lom-mv__thumb {
+  width: 72px;
+  aspect-ratio: 16 / 9;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--lom-bg-muted);
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s, border-color 0.2s;
+}
+
+.lom-mv__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.lom-mv__thumb:hover { opacity: 0.85; }
+
+.lom-mv__thumb.is-active {
+  opacity: 1;
+  border-color: var(--lom-brand);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lom-mv__slide { transition: none; }
+}
+
+@media (max-width: 767px) {
+  .lom-mv__viewport { aspect-ratio: 4 / 3; }
+  .lom-mv__thumb { width: 56px; }
+}

@@ -1,0 +1,17 @@
+/*
+Theme Name: LOM Theme
+Theme URI: https://github.com/tagukichi/lomtheme
+Description: 日本青年会議所（JC）各LOM向けの WordPress テーマ。お知らせの分類別アーカイブ、最新情報サイドバー、メインビジュアルスライダー、組織図・事業計画・賛助会員などJCサイトに必要な機能を同梱しています。ページビルダー不要。
+Version: 0.1.0
+Requires at least: 6.4
+Tested up to: 6.8
+Requires PHP: 8.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: lomtheme
+Tags: translation-ready, custom-menu, featured-images, threaded-comments
+
+このファイルはテーマヘッダーの宣言のためだけに存在します。
+実際のスタイルは assets/css/ 以下に分割され、必要なページでのみ読み込まれます。
+（inc/assets.php を参照）
+*/

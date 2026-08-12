@@ -1,0 +1,183 @@
+/* ===========================================================================
+   アーカイブ：分類タブ + カードグリッド
+
+   既存サイトの jaycee-arc / jaycee-archive を統合したもの。
+   元の実装は Elementor の詳細度と戦うため全宣言に !important が付いていたが、
+   ページビルダーを使わないので不要になった。
+   =========================================================================== */
+
+/* 分類タブ --------------------------------------------------------------- */
+
+.lom-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.lom-filter__tab {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  border: 1px solid var(--lom-border);
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--lom-text-muted);
+  background: var(--lom-bg);
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, background-color 0.2s;
+}
+
+.lom-filter__tab:hover {
+  border-color: var(--badge, var(--lom-brand));
+  color: var(--badge, var(--lom-brand));
+  text-decoration: none;
+}
+
+.lom-filter__tab.is-active {
+  background: var(--badge, var(--lom-brand));
+  border-color: var(--badge, var(--lom-brand));
+  color: #fff;
+}
+
+/* グリッド --------------------------------------------------------------- */
+
+.lom-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px 30px;
+}
+
+@media (max-width: 1024px) {
+  .lom-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 767px) {
+  .lom-grid { gap: 18px 16px; }
+}
+
+/* カード ----------------------------------------------------------------- */
+
+.lom-card {
+  background: var(--lom-bg);
+  border-radius: var(--lom-radius);
+  overflow: hidden;
+  box-shadow: var(--lom-shadow);
+}
+
+.lom-card__link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.lom-card__link:hover { text-decoration: none; }
+.lom-card__link:hover .lom-card__title { text-decoration: underline; }
+
+.lom-card__thumb {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  background: var(--lom-bg-muted);
+  overflow: hidden;
+}
+
+.lom-card__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.lom-thumb__placeholder {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--lom-bg-muted);
+}
+
+/* サムネイル左下のバッジ */
+.lom-card__thumb .lom-badge {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16);
+  pointer-events: none;
+}
+
+.lom-card__body { padding: 10px 12px 12px; }
+
+.lom-card .lom-date {
+  display: block;
+  font-size: 12px;
+  color: var(--lom-text-muted);
+  line-height: 1.6;
+}
+
+.lom-card__title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--lom-text);
+}
+
+@media (max-width: 767px) {
+  .lom-card__body { padding: 9px 10px 11px; }
+  .lom-card__title { font-size: 13px; }
+  .lom-card__thumb .lom-badge {
+    left: 10px;
+    bottom: 10px;
+    padding: 6px 8px;
+    font-size: 10.5px;
+  }
+}
+
+/* 状態表示 --------------------------------------------------------------- */
+
+.lom-archive__status {
+  padding: 12px 0;
+  font-size: 13px;
+  color: var(--lom-text-muted);
+}
+
+.lom-archive__count {
+  margin: 0 0 16px;
+  font-size: 13px;
+  color: var(--lom-text-muted);
+}
+
+.lom-archive.is-loading .lom-grid {
+  opacity: 0.4;
+  transition: opacity 0.2s;
+}
+
+.lom-empty {
+  padding: 40px 0;
+  text-align: center;
+  color: var(--lom-text-muted);
+}
+
+/* ボタン ----------------------------------------------------------------- */
+
+.lom-button {
+  display: inline-block;
+  padding: 12px 32px;
+  border-radius: 9999px;
+  background: var(--lom-brand);
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.lom-button:hover {
+  opacity: 0.88;
+  color: #fff;
+  text-decoration: none;
+}
+
+.lom-front-news { padding-block: 48px; }
+.lom-front-news__more { margin-top: 28px; text-align: center; }

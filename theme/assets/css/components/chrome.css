@@ -1,0 +1,264 @@
+/* ===========================================================================
+   ヘッダーとフッター
+   =========================================================================== */
+
+/* ヘッダー --------------------------------------------------------------- */
+
+.lom-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--lom-bg);
+  border-bottom: 1px solid var(--lom-bg-muted);
+}
+
+.lom-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 64px;
+}
+
+.lom-header__brand img {
+  max-height: 44px;
+  width: auto;
+}
+
+.lom-header__title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--lom-heading);
+  text-decoration: none;
+}
+
+.lom-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.lom-header__cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 22px;
+  border-radius: 6px;
+  background: #e8a33d;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.lom-header__cta:hover { opacity: 0.88; color: #fff; text-decoration: none; }
+
+/* ハンバーガー ------------------------------------------------------------ */
+
+.lom-header__toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  color: var(--lom-heading);
+}
+
+.lom-header__toggle-bar,
+.lom-header__toggle-bar::before,
+.lom-header__toggle-bar::after {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.lom-header__toggle-bar { position: relative; }
+
+.lom-header__toggle-bar::before,
+.lom-header__toggle-bar::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.lom-header__toggle-bar::before { top: -7px; }
+.lom-header__toggle-bar::after  { top: 7px; }
+
+.lom-header__toggle[aria-expanded="true"] .lom-header__toggle-bar {
+  background: transparent;
+}
+.lom-header__toggle[aria-expanded="true"] .lom-header__toggle-bar::before {
+  transform: translateY(7px) rotate(45deg);
+}
+.lom-header__toggle[aria-expanded="true"] .lom-header__toggle-bar::after {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ドロワー --------------------------------------------------------------- */
+
+.lom-drawer {
+  border-top: 1px solid var(--lom-bg-muted);
+  background: var(--lom-bg);
+  padding-block: 20px;
+}
+
+.lom-drawer[hidden] { display: none; }
+
+.lom-drawer__menu {
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.lom-drawer__menu a {
+  display: block;
+  padding: 12px 4px;
+  border-bottom: 1px solid var(--lom-bg-muted);
+  color: var(--lom-heading);
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.lom-drawer__menu a:hover { color: var(--lom-brand); }
+
+/* 検索フォーム ------------------------------------------------------------ */
+
+.lom-search {
+  display: flex;
+  gap: 8px;
+}
+
+.lom-search__input {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 10px 14px;
+  border: 1px solid var(--lom-border);
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.lom-search__input:focus { border-color: var(--lom-brand); }
+
+.lom-search__submit {
+  flex: 0 0 auto;
+  padding: 10px 20px;
+  border: 0;
+  border-radius: 6px;
+  background: var(--lom-brand);
+  color: #fff;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.lom-search__submit:hover { opacity: 0.88; }
+
+/* フッター --------------------------------------------------------------- */
+
+.lom-footer {
+  margin-top: 64px;
+  background: var(--lom-bg-muted);
+}
+
+.lom-footer__inner {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 32px;
+  align-items: start;
+  padding-block: 40px;
+}
+
+.lom-footer__brand img { max-height: 56px; width: auto; }
+
+.lom-footer__address {
+  font-size: 12.5px;
+  line-height: 1.9;
+  color: var(--lom-text);
+}
+
+.lom-footer__address p { margin: 0 0 6px; }
+.lom-footer__address a { color: inherit; }
+
+.lom-footer__org { font-weight: 700; }
+
+.lom-footer__links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.lom-footer__social {
+  display: flex;
+  gap: 14px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.lom-footer__social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: var(--lom-brand);
+}
+
+/* アイコンはテーマにフォントを同梱せず、マスク画像で描く。
+   Font Awesome 等への依存を作らないための措置。 */
+.lom-icon {
+  display: block;
+  width: 20px;
+  height: 20px;
+  background: currentColor;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+}
+
+.lom-icon--facebook  { mask-image: url("../../img/icon-facebook.svg"); }
+.lom-icon--instagram { mask-image: url("../../img/icon-instagram.svg"); }
+.lom-icon--youtube   { mask-image: url("../../img/icon-youtube.svg"); }
+.lom-icon--x         { mask-image: url("../../img/icon-x.svg"); }
+
+.lom-footer__menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px 16px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 12.5px;
+}
+
+.lom-footer__menu a { color: var(--lom-text); }
+
+.lom-footer__copyright {
+  background: var(--lom-brand);
+  color: #fff;
+  padding-block: 10px;
+  font-size: 11.5px;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .lom-footer__inner { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .lom-footer__links { align-items: flex-start; }
+  .lom-footer__menu { justify-content: flex-start; }
+}
