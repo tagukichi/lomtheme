@@ -1,0 +1,24 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# エディタ
+.vscode/
+.idea/
+*.swp
+
+# 依存
+node_modules/
+vendor/
+
+# ビルド成果物（配布用zip）
+/dist/
+*.zip
+
+# Python
+__pycache__/
+*.py[cod]
+
+# ローカル設定
+.env
+.env.local
