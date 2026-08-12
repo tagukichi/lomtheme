@@ -143,6 +143,63 @@
 
 
   /* -----------------------------------------------------------------------
+     理事紹介の詳細モーダル
+
+     詳細はあらかじめ各カードの中に置いてあり、クリックされたら
+     その中身をモーダルへ複製して開く。
+     JavaScript が動かない場合は、詳細がカードの下にそのまま表示される
+     （members.html 末尾の noscript を参照）。内容は失われない。
+     ----------------------------------------------------------------------- */
+  (function memberModal() {
+    var modal = document.querySelector('[data-member-modal]');
+    var grid = document.querySelector('[data-member-grid]');
+    if (!modal || !grid || typeof modal.showModal !== 'function') { return; }
+
+    var slot = modal.querySelector('[data-member-slot]');
+    var closeButton = modal.querySelector('.member-modal__close');
+    var opener = null;
+
+    function open(card) {
+      var detail = card.querySelector('.member-card__detail');
+      if (!detail) { return; }
+
+      slot.replaceChildren(detail.cloneNode(true).children[0] || document.createTextNode(''));
+
+      // 読み上げ時にモーダルの名前が見出しとして読まれるようにする
+      var name = slot.querySelector('.member-modal__name');
+      if (name) {
+        name.id = 'member-modal-name';
+        modal.setAttribute('aria-labelledby', 'member-modal-name');
+      } else {
+        modal.removeAttribute('aria-labelledby');
+      }
+
+      opener = card.querySelector('.member-card__button');
+      modal.showModal();
+    }
+
+    grid.addEventListener('click', function (event) {
+      var button = event.target.closest('.member-card__button');
+      if (!button) { return; }
+      open(button.closest('.member-card'));
+    });
+
+    closeButton.addEventListener('click', function () { modal.close(); });
+
+    // 背景（バックドロップ）をクリックしたら閉じる
+    modal.addEventListener('click', function (event) {
+      if (event.target === modal) { modal.close(); }
+    });
+
+    // 閉じたら、開いたカードへフォーカスを戻す
+    modal.addEventListener('close', function () {
+      slot.replaceChildren();
+      if (opener) { opener.focus(); opener = null; }
+    });
+  }());
+
+
+  /* -----------------------------------------------------------------------
      フッターの西暦
      ----------------------------------------------------------------------- */
   (function copyrightYear() {

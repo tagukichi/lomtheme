@@ -983,6 +983,227 @@ main { min-width: 0; }
 .hero-figure img { width: 100%; border-radius: var(--radius-lg); }
 
 
+/* 14b. 理事紹介（カスタム投稿タイプ members） ==============================
+
+   カードの大きさを揃えるための要点は3つ。
+     1. grid-auto-rows: 1fr    行の高さを揃える
+     2. カードを height:100% の縦フレックスにする
+     3. 写真は aspect-ratio 固定、氏名と会社名は行数を固定して詰める
+   これで氏名や会社名の長さが違ってもカードの寸法が一致する。
+   ========================================================================= */
+
+.member-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  gap: 24px;
+  list-style: none;
+}
+
+@media (max-width: 1000px) { .member-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 720px)  { .member-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; } }
+
+.member-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform .18s, box-shadow .18s, border-color .18s;
+}
+
+.member-card:hover,
+.member-card:focus-within {
+  transform: translateY(-3px);
+  border-color: var(--brand);
+  box-shadow: var(--shadow-lg);
+}
+
+.member-card__photo {
+  aspect-ratio: 3 / 4;
+  background: var(--bg-mute);
+  overflow: hidden;
+}
+
+.member-card__photo img { width: 100%; height: 100%; object-fit: cover; }
+
+.member-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1 1 auto;
+  padding: 14px 14px 16px;
+  text-align: center;
+}
+
+.member-card__role {
+  align-self: center;
+  margin: 0;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--brand-pale);
+  color: var(--brand-dark);
+  font-size: 11.5px;
+  font-weight: 700;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.member-card__role[data-role="理事長"] { background: var(--brand); color: #fff; }
+.member-card__role[data-role="監事"]   { background: var(--bg-mute); color: var(--muted); }
+
+.member-card__name {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.4;
+  letter-spacing: .04em;
+}
+
+/* 会社名の行数を固定する。1行の人と2行の人が混ざってもカードの高さが動かない。 */
+.member-card__company {
+  margin: 0;
+  min-height: 2.8em;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.member-card__hint {
+  margin-top: auto;
+  padding-top: 8px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--brand);
+}
+
+.member-card__hint::after { content: " ▸"; }
+
+/* カード全体をクリックできるようにする透明なボタン */
+.member-card__button {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.member-card__button:focus-visible {
+  outline: 3px solid var(--brand-ring);
+  outline-offset: -3px;
+  border-radius: var(--radius);
+}
+
+/* 詳細はDOMに置いたまま隠しておき、モーダルへ複製する。
+   JavaScript が無い環境ではカードの下にそのまま表示する（末尾の noscript 参照）。 */
+.member-card__detail { display: none; }
+
+
+/* モーダル ---------------------------------------------------------------- */
+
+.member-modal {
+  width: min(720px, calc(100vw - 32px));
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-lg);
+  background: #fff;
+  color: var(--text);
+  box-shadow: var(--shadow-lg);
+}
+
+.member-modal::backdrop {
+  background: rgba(17, 24, 33, .55);
+  backdrop-filter: blur(2px);
+}
+
+.member-modal__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .92);
+  color: var(--heading);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color .16s, color .16s;
+}
+.member-modal__close:hover { background: var(--heading); color: #fff; }
+
+.member-modal__body {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 28px;
+  padding: 28px;
+}
+
+.member-modal__photo img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+.member-modal__role {
+  display: inline-block;
+  margin: 0 0 10px;
+  padding: 5px 14px;
+  border-radius: 999px;
+  background: var(--brand);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.member-modal__name {
+  margin: 0;
+  font-size: clamp(20px, 3vw, 26px);
+  letter-spacing: .04em;
+}
+
+.member-modal__kana {
+  margin: 4px 0 18px;
+  font-size: 12.5px;
+  color: var(--muted);
+  letter-spacing: .08em;
+}
+
+.member-modal__meta {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 8px 16px;
+  margin: 0 0 18px;
+  padding: 16px 0;
+  border-block: 1px solid var(--line);
+  font-size: 13.5px;
+}
+
+.member-modal__meta dt { color: var(--muted); white-space: nowrap; }
+.member-modal__meta dd { margin: 0; }
+
+.member-modal__message { font-size: 14.5px; }
+.member-modal__message p { margin-bottom: .9em; }
+
+@media (max-width: 640px) {
+  .member-modal__body { grid-template-columns: minmax(0, 1fr); gap: 20px; padding: 20px; }
+  .member-modal__photo { max-width: 200px; margin-inline: auto; }
+}
+
+
 /* 15. 記事本文 ============================================================ */
 
 .entry-head { margin-bottom: 28px; }

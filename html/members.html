@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>理事紹介｜一般社団法人○○青年会議所</title>
+<meta name="description" content="2026年度の一般社団法人○○青年会議所の理事・役員をご紹介します。">
+<meta property="og:title" content="理事紹介｜一般社団法人○○青年会議所">
+<meta property="og:type" content="article">
+<meta property="og:image" content="assets/img/ogp.svg">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+1:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">本文へスキップ</a>
+
+<header class="site-header">
+  <div class="site-header__inner container">
+    <a class="site-logo" href="index.html">
+      <img src="assets/img/logo.svg" alt="" width="120" height="120">
+      <span class="site-logo__text">
+        <span class="site-logo__sub">一般社団法人</span>
+        <span class="site-logo__name">○○青年会議所</span>
+      </span>
+    </a>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー">
+      <ul>
+        <li><a href="index.html">ホーム</a></li>
+        <li><a href="greeting.html">理事長あいさつ</a></li>
+        <li><a href="members.html" aria-current="page">理事紹介</a></li>
+        <li><a href="activity.html">活動について</a></li>
+        <li><a href="news.html">最新情報</a></li>
+        <li><a href="contact.html">お問い合わせ</a></li>
+      </ul>
+    </nav>
+    <a class="header-cta" href="join.html">入会のご案内</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="gnav">
+      <span class="nav-toggle__bar" aria-hidden="true"></span>
+      <span class="visually-hidden nav-toggle__label">メニューを開く</span>
+    </button>
+  </div>
+</header>
+
+<nav class="breadcrumb" aria-label="パンくず">
+  <div class="container">
+    <ol>
+      <li><a href="index.html">ホーム</a></li>
+      <li><span aria-current="page">理事紹介</span></li>
+    </ol>
+  </div>
+</nav>
+
+<div class="page-head">
+  <div class="container">
+    <span class="page-head__en">MEMBERS</span>
+    <h1>理事紹介</h1>
+  </div>
+</div>
+
+<div class="container">
+  <div class="layout layout--full">
+    <main id="main">
+
+      <p style="text-align:center;margin-bottom:40px">
+        2026年度の理事・役員をご紹介します。<br>
+        お名前をクリックすると、担当や本人からのメッセージをご覧いただけます。
+      </p>
+
+      <!--
+        WordPress 化するときの対応（カスタム投稿タイプ: members）
+
+          カード画像 / 詳細の写真   → アイキャッチ画像
+          氏名                      → 投稿タイトル
+          役職（理事長・監事など）  → タクソノミー member_role
+          ふりがな                  → カスタムフィールド name_kana
+          所属（会社名・肩書）      → カスタムフィールド company
+          担当（委員会）            → カスタムフィールド committee
+          入会年                    → カスタムフィールド joined_year
+          メッセージ                → 本文
+          並び順                    → menu_order（役職順に手で並べ替える）
+      -->
+      <ul class="member-grid" data-member-grid>
+        <li class="member-card">
+          <div class="member-card__photo">
+            <img src="assets/img/member1.svg" alt="山田 太郎" width="600" height="800" loading="lazy">
+          </div>
+          <div class="member-card__body">
+            <p class="member-card__role" data-role="理事長">理事長</p>
+            <h2 class="member-card__name">山田 太郎</h2>
+            <p class="member-card__company">株式会社○○建設 代表取締役</p>
+            <p class="member-card__hint">詳しく見る</p>
+          </div>
+
+          <button class="member-card__button" type="button">
+            <span class="visually-hidden">山田 太郎（理事長）の詳細を見る</span>
+          </button>
+
+          <div class="member-card__detail">
+            <div class="member-modal__body">
+              <div class="member-modal__photo">
+                <img src="assets/img/member1.svg" alt="山田 太郎" width="600" height="800">
+              </div>
+              <div>
+                <p class="member-modal__role">理事長</p>
+                <h3 class="member-modal__name">山田 太郎</h3>
+                <p class="member-modal__kana">やまだ たろう</p>
+                <dl class="member-modal__meta">
+                  <dt>所属</dt><dd>株式会社○○建設 代表取締役</dd>
+                  <dt>担当</dt><dd>総務委員会</dd>
+                  <dt>入会</dt><dd>2016年</dd>
+                </dl>
+                <div class="member-modal__message">
+                  <p>本年度、第○○代理事長を拝命いたしました。まちの課題に正面から向き合い、メンバー一人ひとりが主役になれる一年にしたいと考えています。地域の皆様のお力添えを賜りますようお願い申し上げます。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="member-card">
+          <div class="member-card__photo">
+            <img src="assets/img/member2.svg" alt="佐藤 一郎" width="600" height="800" loading="lazy">
+          </div>
+          <div class="member-card__body">
+            <p class="member-card__role" data-role="副理事長">副理事長</p>
+            <h2 class="member-card__name">佐藤 一郎</h2>
+            <p class="member-card__company">○○不動産株式会社 専務取締役</p>
+            <p class="member-card__hint">詳しく見る</p>
+          </div>
+
+          <button class="member-card__button" type="button">
+            <span class="visually-hidden">佐藤 一郎（副理事長）の詳細を見る</span>
+          </button>
+
+          <div class="member-card__detail">
+            <div class="member-modal__body">
+              <div class="member-modal__photo">
+                <img src="assets/img/member2.svg" alt="佐藤 一郎" width="600" height="800">
+              </div>
+              <div>
+                <p class="member-modal__role">副理事長</p>
+                <h3 class="member-modal__name">佐藤 一郎</h3>
+                <p class="member-modal__kana">さとう いちろう</p>
+                <dl class="member-modal__meta">
+                  <dt>所属</dt><dd>○○不動産株式会社 専務取締役</dd>
+                  <dt>担当</dt><dd>まちづくり推進会議</dd>
+                  <dt>入会</dt><dd>2017年</dd>
+                </dl>
+                <div class="member-modal__message">
+                  <p>まちづくりは一朝一夕には進みません。だからこそ、続けられる仕組みをつくることを意識して取り組んでまいります。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="member-card">
+          <div class="member-card__photo">
+            <img src="assets/img/member3.svg" alt="鈴木 健二" width="600" height="800" loading="lazy">
+          </div>
+          <div class="member-card__body">
+            <p class="member-card__role" data-role="副理事長">副理事長</p>
+            <h2 class="member-card__name">鈴木 健二</h2>
+            <p class="member-card__company">有限会社○○商店 代表</p>
+            <p class="member-card__hint">詳しく見る</p>
+          </div>
+
+          <button class="member-card__button" type="button">
+            <span class="visually-hidden">鈴木 健二（副理事長）の詳細を見る</span>
+          </button>
+
+          <div class="member-card__detail">
+            <div class="member-modal__body">
+              <div class="member-modal__photo">
+                <img src="assets/img/member3.svg" alt="鈴木 健二" width="600" height="800">
+              </div>
+              <div>
+                <p class="member-modal__role">副理事長</p>
+                <h3 class="member-modal__name">鈴木 健二</h3>
+                <p class="member-modal__kana">すずき けんじ</p>
+                <dl class="member-modal__meta">
+                  <dt>所属</dt><dd>有限会社○○商店 代表</dd>
+                  <dt>担当</dt><dd>青少年育成会議</dd>
+                  <dt>入会</dt><dd>2018年</dd>
+                </dl>
+                <div class="member-modal__message">
+                  <p>子どもたちが「このまちで育ってよかった」と思える体験を、ひとつでも多く届けたいと思っています。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="member-card">
+          <div class="member-card__photo">
+            <img src="assets/img/member4.svg" alt="高橋 美咲" width="600" height="800" loading="lazy">
+          </div>
+          <div class="member-card__body">
+            <p class="member-card__role" data-role="副理事長">副理事長</p>
+            <h2 class="member-card__name">高橋 美咲</h2>
+            <p class="member-card__company">○○デザイン事務所 代表</p>
+            <p class="member-card__hint">詳しく見る</p>
+          </div>
+
+          <button class="member-card__button" type="button">
+            <span class="visually-hidden">高橋 美咲（副理事長）の詳細を見る</span>
+          </button>
+
+          <div class="member-card__detail">
+            <div class="member-modal__body">
+              <div class="member-modal__photo">
+                <img src="assets/img/member4.svg" alt="高橋 美咲" width="600" height="800">
+              </div>
+              <div>
+                <p class="member-modal__role">副理事長</p>
+                <h3 class="member-modal__name">高橋 美咲</h3>
+                <p class="member-modal__kana">たかはし みさき</p>
+                <dl class="member-modal__meta">
+                  <dt>所属</dt><dd>○○デザイン事務所 代表</dd>
+                  <dt>担当</dt><dd>広報会議</dd>
+                  <dt>入会</dt><dd>2019年</dd>
+                </dl>
+                <div class="member-modal__message">
+                  <p>私たちの運動は、伝わってはじめて意味を持ちます。届け方を工夫し、より多くの方に知っていただけるよう努めます。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="member-card">
+          <div class="member-card__photo">
+            <img src="assets/img/member5.svg" alt="田中 誠" width="600" height="800" loading="lazy">
+          </div>
+          <div class="member-card__body">
+            <p class="member-card__role" data-role="専務理事">専務理事</p>
+            <h2 class="member-card__name">田中 誠</h2>
+            <p class="member-card__company">税理士法人○○ 税理士</p>
+            <p class="member-card__hint">詳しく見る</p>
+          </div>
+
+          <button class="member-card__button" type="button">
+            <span class="visually-hidden">田中 誠（専務理事）の詳細を見る</span>
+          </button>
+
+          <div class="member-card__detail">
+            <div class="member-modal__body">
+              <div class="member-modal__photo">
+                <img src="assets/img/member5.svg" alt="田中 誠" width="600" height="800">
+              </div>
+              <div>
+                <p class="member-modal__role">専務理事</p>
+                <h3 class="member-modal__name">田中 誠</h3>
+                <p class="member-modal__kana">たなか まこと</p>
+                <dl class="member-modal__meta">
+                  <dt>所属</dt><dd>税理士法人○○ 税理士</dd>
+                  <dt>担当</dt><dd>総務委員会</dd>
+                  <dt>入会</dt><dd>2017年</dd>
+                </dl>
+                <div class="member-modal__message">
+                  <p>組織が滞りなく回るよう、足元を固める役割に徹します。メンバーが活動に集中できる環境をつくります。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="member-card">
+          <div class="member-card__photo">
+            <img src="assets/img/member6.svg" alt="伊藤 大輔" width="600" height="800" loading="lazy">
+          </div>
+          <div class="member-card__body">
+            <p class="member-card__role" data-role="常務理事">常務理事</p>
+            <h2 class="member-card__name">伊藤 大輔</h2>
+            <p class="member-card__company">株式会社○○製作所 取締役</p>
+            <p class="member-card__hint">詳しく見る</p>
+          </div>
+
+          <button class="member-card__button" type="button">
+            <span class="visually-hidden">伊藤 大輔（常務理事）の詳細を見る</span>
+          </button>
+
+          <div class="member-card__detail">
+            <div class="member-modal__body">
+              <div class="member-modal__photo">
+                <img src="assets/img/member6.svg" alt="伊藤 大輔" width="600" height="800">
+              </div>
+              <div>
+                <p class="member-modal__role">常務理事</p>
+                <h3 class="member-modal__name">伊藤 大輔</h3>
+                <p class="member-modal__kana">いとう だいすけ</p>
+                <dl class="member-modal__meta">
+                  <dt>所属</dt><dd>株式会社○○製作所 取締役</dd>
+                  <dt>担当</dt><dd>財務委員会</dd>
+                  <dt>入会</dt><dd>2018年</dd>
+                </dl>
+                <div class="member-modal__message">
+                  <p>限られた資源をどこに使うか。その判断の質が運動の成果を左右すると考え、丁寧に検討してまいります。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="member-card">
+          <div class="member-card__photo">
+            <img src="assets/img/member7.svg" alt="渡辺 隆" width="600" height="800" loading="lazy">
+          </div>
+          <div class="member-card__body">
+            <p class="member-card__role" data-role="監事">監事</p>
+            <h2 class="member-card__name">渡辺 隆</h2>
+            <p class="member-card__company">○○会計事務所 公認会計士</p>
+            <p class="member-card__hint">詳しく見る</p>
+          </div>
+
+          <button class="member-card__button" type="button">
+            <span class="visually-hidden">渡辺 隆（監事）の詳細を見る</span>
+          </button>
+
+          <div class="member-card__detail">
+            <div class="member-modal__body">
+              <div class="member-modal__photo">
+                <img src="assets/img/member7.svg" alt="渡辺 隆" width="600" height="800">
+              </div>
+              <div>
+                <p class="member-modal__role">監事</p>
+                <h3 class="member-modal__name">渡辺 隆</h3>
+                <p class="member-modal__kana">わたなべ たかし</p>
+                <dl class="member-modal__meta">
+                  <dt>所属</dt><dd>○○会計事務所 公認会計士</dd>
+                  <dt>担当</dt><dd>―</dd>
+                  <dt>入会</dt><dd>2015年</dd>
+                </dl>
+                <div class="member-modal__message">
+                  <p>公益法人として求められる透明性を確保できるよう、第三者の目線で監査にあたります。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="member-card">
+          <div class="member-card__photo">
+            <img src="assets/img/member8.svg" alt="中村 洋子" width="600" height="800" loading="lazy">
+          </div>
+          <div class="member-card__body">
+            <p class="member-card__role" data-role="監事">監事</p>
+            <h2 class="member-card__name">中村 洋子</h2>
+            <p class="member-card__company">中村法律事務所 弁護士</p>
+            <p class="member-card__hint">詳しく見る</p>
+          </div>
+
+          <button class="member-card__button" type="button">
+            <span class="visually-hidden">中村 洋子（監事）の詳細を見る</span>
+          </button>
+
+          <div class="member-card__detail">
+            <div class="member-modal__body">
+              <div class="member-modal__photo">
+                <img src="assets/img/member8.svg" alt="中村 洋子" width="600" height="800">
+              </div>
+              <div>
+                <p class="member-modal__role">監事</p>
+                <h3 class="member-modal__name">中村 洋子</h3>
+                <p class="member-modal__kana">なかむら ようこ</p>
+                <dl class="member-modal__meta">
+                  <dt>所属</dt><dd>中村法律事務所 弁護士</dd>
+                  <dt>担当</dt><dd>―</dd>
+                  <dt>入会</dt><dd>2016年</dd>
+                </dl>
+                <div class="member-modal__message">
+                  <p>適正な運営を支えることが監事の務めです。気づいた点は率直にお伝えしてまいります。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="member-card">
+          <div class="member-card__photo">
+            <img src="assets/img/member9.svg" alt="小林 拓也" width="600" height="800" loading="lazy">
+          </div>
+          <div class="member-card__body">
+            <p class="member-card__role" data-role="委員長">委員長</p>
+            <h2 class="member-card__name">小林 拓也</h2>
+            <p class="member-card__company">株式会社○○運輸 部長</p>
+            <p class="member-card__hint">詳しく見る</p>
+          </div>
+
+          <button class="member-card__button" type="button">
+            <span class="visually-hidden">小林 拓也（委員長）の詳細を見る</span>
+          </button>
+
+          <div class="member-card__detail">
+            <div class="member-modal__body">
+              <div class="member-modal__photo">
+                <img src="assets/img/member9.svg" alt="小林 拓也" width="600" height="800">
+              </div>
+              <div>
+                <p class="member-modal__role">委員長</p>
+                <h3 class="member-modal__name">小林 拓也</h3>
+                <p class="member-modal__kana">こばやし たくや</p>
+                <dl class="member-modal__meta">
+                  <dt>所属</dt><dd>株式会社○○運輸 部長</dd>
+                  <dt>担当</dt><dd>まちづくり推進委員会</dd>
+                  <dt>入会</dt><dd>2019年</dd>
+                </dl>
+                <div class="member-modal__message">
+                  <p>地域の事業者の皆様と連携し、まちの回遊性を高める事業を企画しています。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="member-card">
+          <div class="member-card__photo">
+            <img src="assets/img/member10.svg" alt="加藤 直樹" width="600" height="800" loading="lazy">
+          </div>
+          <div class="member-card__body">
+            <p class="member-card__role" data-role="委員長">委員長</p>
+            <h2 class="member-card__name">加藤 直樹</h2>
+            <p class="member-card__company">○○印刷株式会社 課長</p>
+            <p class="member-card__hint">詳しく見る</p>
+          </div>
+
+          <button class="member-card__button" type="button">
+            <span class="visually-hidden">加藤 直樹（委員長）の詳細を見る</span>
+          </button>
+
+          <div class="member-card__detail">
+            <div class="member-modal__body">
+              <div class="member-modal__photo">
+                <img src="assets/img/member10.svg" alt="加藤 直樹" width="600" height="800">
+              </div>
+              <div>
+                <p class="member-modal__role">委員長</p>
+                <h3 class="member-modal__name">加藤 直樹</h3>
+                <p class="member-modal__kana">かとう なおき</p>
+                <dl class="member-modal__meta">
+                  <dt>所属</dt><dd>○○印刷株式会社 課長</dd>
+                  <dt>担当</dt><dd>青少年育成委員会</dd>
+                  <dt>入会</dt><dd>2020年</dd>
+                </dl>
+                <div class="member-modal__message">
+                  <p>子どもたちの真剣な表情に、こちらが学ばせてもらう場面が何度もあります。今年も全力で臨みます。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="member-card">
+          <div class="member-card__photo">
+            <img src="assets/img/member11.svg" alt="吉田 彩" width="600" height="800" loading="lazy">
+          </div>
+          <div class="member-card__body">
+            <p class="member-card__role" data-role="委員長">委員長</p>
+            <h2 class="member-card__name">吉田 彩</h2>
+            <p class="member-card__company">株式会社○○フーズ マネージャー</p>
+            <p class="member-card__hint">詳しく見る</p>
+          </div>
+
+          <button class="member-card__button" type="button">
+            <span class="visually-hidden">吉田 彩（委員長）の詳細を見る</span>
+          </button>
+
+          <div class="member-card__detail">
+            <div class="member-modal__body">
+              <div class="member-modal__photo">
+                <img src="assets/img/member11.svg" alt="吉田 彩" width="600" height="800">
+              </div>
+              <div>
+                <p class="member-modal__role">委員長</p>
+                <h3 class="member-modal__name">吉田 彩</h3>
+                <p class="member-modal__kana">よしだ あや</p>
+                <dl class="member-modal__meta">
+                  <dt>所属</dt><dd>株式会社○○フーズ マネージャー</dd>
+                  <dt>担当</dt><dd>会員拡大委員会</dd>
+                  <dt>入会</dt><dd>2021年</dd>
+                </dl>
+                <div class="member-modal__message">
+                  <p>仲間が増えることが、運動を続ける力になります。まずは一度、例会をのぞきに来てください。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="member-card">
+          <div class="member-card__photo">
+            <img src="assets/img/member12.svg" alt="山本 慎一" width="600" height="800" loading="lazy">
+          </div>
+          <div class="member-card__body">
+            <p class="member-card__role" data-role="委員長">委員長</p>
+            <h2 class="member-card__name">山本 慎一</h2>
+            <p class="member-card__company">○○電気工事株式会社 代表</p>
+            <p class="member-card__hint">詳しく見る</p>
+          </div>
+
+          <button class="member-card__button" type="button">
+            <span class="visually-hidden">山本 慎一（委員長）の詳細を見る</span>
+          </button>
+
+          <div class="member-card__detail">
+            <div class="member-modal__body">
+              <div class="member-modal__photo">
+                <img src="assets/img/member12.svg" alt="山本 慎一" width="600" height="800">
+              </div>
+              <div>
+                <p class="member-modal__role">委員長</p>
+                <h3 class="member-modal__name">山本 慎一</h3>
+                <p class="member-modal__kana">やまもと しんいち</p>
+                <dl class="member-modal__meta">
+                  <dt>所属</dt><dd>○○電気工事株式会社 代表</dd>
+                  <dt>担当</dt><dd>広報委員会</dd>
+                  <dt>入会</dt><dd>2020年</dd>
+                </dl>
+                <div class="member-modal__message">
+                  <p>活動の様子をこまめに発信し、開かれた青年会議所であることを伝えてまいります。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+    </main>
+  </div>
+</div>
+
+<dialog class="member-modal" data-member-modal aria-label="理事の詳細">
+  <button class="member-modal__close" type="button">
+    <span aria-hidden="true">&times;</span>
+    <span class="visually-hidden">閉じる</span>
+  </button>
+  <div data-member-slot></div>
+</dialog>
+
+<noscript>
+  <style>
+    /* JavaScript が動かない環境では、詳細をカードの下にそのまま表示する。
+       1カラムにしないと読めないので、あわせて並びも変える。 */
+    .member-grid { grid-template-columns: minmax(0, 1fr); grid-auto-rows: auto; }
+    .member-card { flex-direction: row; flex-wrap: wrap; }
+    .member-card__photo { width: 160px; }
+    .member-card__button, .member-card__hint { display: none; }
+    .member-card__detail { display: block; flex-basis: 100%; border-top: 1px solid var(--line); }
+  </style>
+</noscript>
+
+<footer class="site-footer">
+  <div class="site-footer__inner container">
+    <div class="footer-org">
+      <img src="assets/img/logo.svg" alt="" width="120" height="120">
+      <div>
+        <p class="footer-org__name">一般社団法人○○青年会議所</p>
+        <address>
+          〒000-0000<br>
+          ○○県○○市○○町1-2-3 ○○ビル4F<br>
+          TEL <a href="tel:0000000000">000-000-0000</a>／FAX 000-000-0001<br>
+          <a href="mailto:info@example.jp">info@example.jp</a>
+        </address>
+      </div>
+    </div>
+    <nav class="footer-nav" aria-label="フッターメニュー">
+      <p class="footer-nav__title">MENU</p>
+      <ul>
+        <li><a href="index.html">ホーム</a></li>
+        <li><a href="greeting.html">理事長あいさつ</a></li>
+        <li><a href="members.html" aria-current="page">理事紹介</a></li>
+        <li><a href="activity.html">活動について</a></li>
+        <li><a href="news.html">最新情報</a></li>
+        <li><a href="join.html">入会のご案内</a></li>
+        <li><a href="contact.html">お問い合わせ</a></li>
+        <li><a href="privacy.html">個人情報保護方針</a></li>
+      </ul>
+    </nav>
+    <div class="footer-social">
+      <p class="footer-social__title">FOLLOW</p>
+      <ul>
+        <li><a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5H16.7V3.6c-.29-.04-1.27-.12-2.42-.12-2.4 0-4.03 1.46-4.03 4.15V9.9H7.5V13h2.75v8h3.25z"/></svg></a></li>
+        <li><a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.25.07 1.63.07 4.81s-.01 3.56-.07 4.81c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.25.06-1.63.07-4.85.07s-3.6-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23C2.21 15.56 2.2 15.18 2.2 12s.01-3.56.07-4.81c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.44 2.21 8.82 2.2 12 2.2zm0 1.8c-3.13 0-3.5.01-4.73.07-.9.04-1.39.19-1.71.32-.43.17-.74.37-1.06.69-.32.32-.52.63-.69 1.06-.13.32-.28.81-.32 1.71C3.43 8.9 3.42 9.27 3.42 12s.01 3.1.07 4.15c.04.9.19 1.39.32 1.71.17.43.37.74.69 1.06.32.32.63.52 1.06.69.32.13.81.28 1.71.32 1.23.06 1.6.07 4.73.07s3.5-.01 4.73-.07c.9-.04 1.39-.19 1.71-.32.43-.17.74-.37 1.06-.69.32-.32.52-.63.69-1.06.13-.32.28-.81.32-1.71.06-1.05.07-1.42.07-4.15s-.01-3.1-.07-4.15c-.04-.9-.19-1.39-.32-1.71a2.85 2.85 0 0 0-.69-1.06 2.85 2.85 0 0 0-1.06-.69c-.32-.13-.81-.28-1.71-.32C15.5 4.01 15.13 4 12 4zm0 3.03a4.97 4.97 0 1 1 0 9.94 4.97 4.97 0 0 1 0-9.94zm0 1.8a3.17 3.17 0 1 0 0 6.34 3.17 3.17 0 0 0 0-6.34zm6.33-2c0 .64-.52 1.16-1.16 1.16a1.16 1.16 0 1 1 1.16-1.16z"/></svg></a></li>
+        <li><a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 12s0-3.5-.45-5.17a2.63 2.63 0 0 0-1.85-1.86C19.02 4.5 12 4.5 12 4.5s-7.02 0-8.7.47A2.63 2.63 0 0 0 1.45 6.83C1 8.5 1 12 1 12s0 3.5.45 5.17c.25.92.97 1.62 1.85 1.86 1.68.47 8.7.47 8.7.47s7.02 0 8.7-.47a2.63 2.63 0 0 0 1.85-1.86C23 15.5 23 12 23 12zM9.75 15.27V8.73L15.5 12l-5.75 3.27z"/></svg></a></li>
+        <li><a href="#" aria-label="X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.65l-5.22-6.82-5.96 6.82H1.67l7.73-8.84L1.25 2.25h6.82l4.71 6.23 5.46-6.23zm-1.16 17.52h1.83L7.01 4.13H5.05l12.03 15.64z"/></svg></a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="site-footer__copyright">
+    &copy; <span data-year>2026</span> 一般社団法人○○青年会議所 All Rights Reserved.
+  </p>
+</footer>
+
+<script src="assets/js/main.js"></script>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
