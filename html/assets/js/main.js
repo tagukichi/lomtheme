@@ -42,17 +42,20 @@
 
 
   /* -----------------------------------------------------------------------
-     メインビジュアルのスライダー
+     キービジュアルのスライダー
+
+     切り替えはサムネイルで行う。ドットとサムネイルを両方置くと、
+     同じ操作の入口が2つになって迷わせるため、サムネイルに一本化した。
 
      スライドが1枚のときは何もしない。ユーザーが「視差効果を減らす」設定に
      している場合は自動送りしない。
      ----------------------------------------------------------------------- */
   (function mainVisual() {
-    var root = document.querySelector('[data-mv]');
+    var root = document.querySelector('[data-kv]');
     if (!root) { return; }
 
-    var slides = root.querySelectorAll('.mv__slide');
-    var dots = root.querySelectorAll('.mv__dot');
+    var slides = root.querySelectorAll('.kv__slide');
+    var dots = root.querySelectorAll('.kv__thumb');
     if (slides.length < 2) { return; }
 
     var index = 0;
