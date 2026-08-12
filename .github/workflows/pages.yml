@@ -1,16 +1,16 @@
-name: プレビューを GitHub Pages に公開
+name: サイトを GitHub Pages に公開
 
-# テーマのテンプレートやCSSを変更したら自動で再生成して公開する。
-# 生成物をコミットに頼らないので、公開されているプレビューが
-# ソースより古くなることがない。
+# html/ をそのまま公開する。ビルド工程は無い。
+# 公開前に tools/check_html.py を通し、リンク切れや見出し構造の
+# 崩れがあれば公開せずに落とす。
 
 on:
   push:
     branches:
       - claude/jc-wordpress-theme-pl5zh5
     paths:
-      - 'theme/**'
-      - 'tools/preview/**'
+      - 'html/**'
+      - 'tools/check_html.py'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
 
@@ -19,41 +19,23 @@ permissions:
   pages: write
   id-token: write
 
-# 公開は同時に1つだけ。実行中のものは走り切らせる。
 concurrency:
   group: pages
   cancel-in-progress: false
 
 jobs:
   build:
-    name: プレビューを生成
+    name: 検査して固める
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: PHP を確認
-        run: php --version
-
-      - name: プレビューを生成
-        run: |
-          php tools/preview/build.php
-          php tools/preview/build-standalone.php
-
-      - name: 公開用ディレクトリを組み立てる
-        # preview/*.html は ../theme/assets を相対参照するため、
-        # リポジトリと同じ階層関係を保ったまま配置する。
-        run: |
-          mkdir -p site/theme
-          cp -r preview site/preview
-          cp -r theme/assets site/theme/assets
-          cp preview/standalone.html site/index.html
-          touch site/.nojekyll
-          echo "--- 公開されるファイル ---"
-          find site -type f | sort
+      - name: HTMLを検査する
+        run: python3 tools/check_html.py html/
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: site
+          path: html
 
   deploy:
     name: 公開

@@ -1,102 +1,76 @@
 # LOM Theme（仮称）
 
-日本青年会議所（JC）各 LOM 向けの、配布・販売用 WordPress テーマ。
-
-これまで手掛けてきた JC サイト制作のノウハウを1つのテーマに集約し、
+日本青年会議所（JC）各 LOM 向けのウェブサイト。
+これまで手掛けてきた JC サイト制作のノウハウを1つにまとめ、
 各 LOM が短期間で品質の揃ったサイトを立ち上げられるようにすることが目的。
 
-**リファレンス実装**: [tamanojc.com](https://tamanojc.com/)（一般社団法人玉野青年会議所）
+**公開URL**: https://tagukichi.github.io/lomtheme/
+**リファレンス実装**: [tamanojc.com](https://tamanojc.com/)（既存サイトの解析元）
 
 ---
 
-## 方針
-
-### クラシックテーマ + ACF
-
-| 決定事項 | 理由 |
-|---|---|
-| クラシックテーマ（PHPテンプレート） | ページビルダー不要。各 LOM に追加ライセンス費が発生しない |
-| ACF でコンテンツを構造化 | 理事長挨拶・役員・委員会・例会などを入力欄として提供し、担当者が崩せないようにする |
-| Elementor 依存を切る | リファレンス実装は Elementor 製だが、配布商品としては各 LOM への Elementor（機能次第で Pro）導入が前提になり、コストと依存が弱点になる |
-| ブロックテーマ（FSE）を採らない | 管理画面から自由に編集できる反面、担当者交代の多い JC ではレイアウトが崩れやすく、サポート負荷が上がる |
-
-JC は**毎年役員が入れ替わる**組織であり、引き継ぎのたびに Web 担当者が変わる。
-「触れる範囲を意図的に絞る」ことがテーマ設計上の最重要要件となる。
-
----
-
-## リポジトリ構成
+## いまの中身
 
 ```
-theme/                  配布するテーマ本体（詳細は docs/04）
-preview/                ブラウザ確認用の静的HTML（index.html を開く）
-  ↑ tools/preview/build.php が生成。手で編集しない
-reference/              SingleFile で保存した既存サイトHTML（解析用の入力）
-  README.md             ← 保存してほしいページ一覧と手順
-  extracted-css/        既存サイトから回収したコンポーネントCSS
+html/                   ★ サイト本体（素のHTML／これが成果物）
+  README.md             各LOMへの展開手順
+  index.html ほか8ページ
+  assets/css|js|img/
+
 tools/
-  extract_structure.py  「何が使われているか」を抽出（プラグイン・ウィジェット等）
-  outline.py            「どう組まれているか」を出力（DOMアウトライン）
-  preview/              テンプレートを実行して静的HTMLを書き出す仕組み
+  check_html.py         リンク切れ・見出し構造の検査
+  extract_structure.py  既存サイトHTMLから使用技術を抽出（解析用）
+  outline.py            既存サイトHTMLのDOM構造を出力（解析用）
+  preview/              旧・WordPressテーマのプレビュー生成（現在は未使用）
+
 docs/
   01-existing-site-findings.md    既存サイトの解析結果
-  02-component-inventory.md       独自コンポーネントの棚卸し
-  03-page-layout-requirements.md  固定ページのレイアウト要件
-  04-theme-structure.md           テーマ構造と設計判断
-  site-analysis/                  ↑ スクリプトが生成する解析レポート
+  02-component-inventory.md       既存サイトの独自コンポーネント棚卸し
+  03-page-layout-requirements.md  参考レイアウトの分解
+  04-theme-structure.md           旧・WordPressテーマの構造
+  site-analysis/                  解析レポート（自動生成）
+
+reference/              SingleFile で保存した既存サイトHTML（解析の入力）
+theme/                  旧・WordPressテーマ（クラシック+ACF／現在は凍結）
 ```
+
+### `theme/` について
+
+先に WordPress のクラシックテーマとして実装したが、
+**素のHTMLで作り直す方針に切り替えた**ため現在は凍結している。
+削除はしていない。WordPress化する段になったら、`html/` を元に
+[WordPressテーマへ変換する](docs/04-theme-structure.md)。
 
 ---
 
 ## 進め方
 
-- [x] 既存サイトの調査
-- [x] 解析基盤の用意
-- [x] SingleFile で既存サイトを取り込み（6ページ）
+- [x] 既存サイト（tamanojc.com）の解析
 - [x] 独自コンポーネントの棚卸し
-- [x] テーマ設計（テンプレート階層・分類・ACFフィールド定義）
-- [x] 実装：骨格・アーカイブ・投稿個別・サイドバー・メインビジュアル
-- [x] 実装：固定ページのレイアウト7種
-- [ ] **実機での表示確認** ← 現在ここ
-- [ ] 組織図・事業計画・賛助会員のコンポーネント（参考ページ待ち）
-- [ ] お問い合わせフォーム / 会員専用エリア
-- [ ] 導入手順書
-- [ ] 配布形態の設計（ライセンス・更新配信）
+- [x] 参考レイアウトの分解
+- [x] **静的サイトとして実装（9ページ）**
+- [x] GitHub Pages で公開
+- [ ] 実データでの調整（文言・写真・組織情報）
+- [ ] 組織図・事業計画・賛助会員のページ
+- [ ] WordPress化（テーマとして配布する場合）
+- [ ] 配布形態の設計（ライセンス・更新配信・導入手順書）
 
-### 必要な環境
+---
 
-- WordPress 6.4 以降 / PHP 8.0 以降
-- Advanced Custom Fields **Pro**（フレキシブルコンテンツと繰り返しフィールドを使用）
+## 開発
 
-### ブラウザで見た目を確認する
-
-WordPress を立てずに、テーマの表示を確認できます。
+ビルド工程は無い。`html/index.html` をブラウザで開けばそのまま動く。
 
 ```bash
-php tools/preview/build.php
-open preview/index.html          # ダブルクリックでも可
+# ローカルで確認（file:// でも動くが、サーバー経由のほうが本番に近い）
+python3 -m http.server 8000 --directory html
+open http://localhost:8000/
+
+# 検査
+python3 tools/check_html.py html/
 ```
 
-**静的HTMLを別途手で書くのではなく、テーマの実テンプレート
-（`theme/*.php`）をそのまま実行して書き出しています。** CSSとJSも
-テーマ本体を直接参照するので、プレビューとテーマ出力が乖離しません。
-テンプレートやCSSを変更したら `build.php` を再実行してください。
+`html/` に push すると、検査を通したうえで自動的に公開される。
+検査に落ちたページがあると公開されない。
 
-生成されるのは トップ / 活動について / 入会のご案内 / 理事長あいさつ /
-一覧 / 記事 / 検索結果 / 404 の8画面です。
-
-| 動くもの | 動かないもの |
-|---|---|
-| メインビジュアルのスライダー | 分類タブのAJAX絞り込み（サーバーが必要） |
-| ハンバーガーメニュー | 検索の実行 |
-| レスポンシブ全般 | 画像は生成したプレースホルダ |
-
-### 解析の実行
-
-```bash
-python3 tools/extract_structure.py reference/     # 全ページのレポート生成
-python3 tools/outline.py reference/01-home.html   # 単一ページの構造を見る
-```
-
-`docs/site-analysis/` に、ページごとのレポートと `_summary.md`（全ページ横断の
-サイトマップ・プラグイン推定・ウィジェット使用頻度）が生成される。
+各LOMへの展開手順は [`html/README.md`](html/README.md) を参照。
