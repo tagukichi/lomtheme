@@ -78,4 +78,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</div>
 </header>
 
-<?php lomtheme_the_breadcrumb(); ?>
+<div class="lom-container lom-container--wide">
+	<?php lomtheme_the_breadcrumb(); ?>
+</div>

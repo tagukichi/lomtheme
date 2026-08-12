@@ -29,12 +29,15 @@ JC は**毎年役員が入れ替わる**組織であり、引き継ぎのたび�
 
 ```
 theme/                  配布するテーマ本体（詳細は docs/04）
+preview/                ブラウザ確認用の静的HTML（index.html を開く）
+  ↑ tools/preview/build.php が生成。手で編集しない
 reference/              SingleFile で保存した既存サイトHTML（解析用の入力）
   README.md             ← 保存してほしいページ一覧と手順
   extracted-css/        既存サイトから回収したコンポーネントCSS
 tools/
   extract_structure.py  「何が使われているか」を抽出（プラグイン・ウィジェット等）
   outline.py            「どう組まれているか」を出力（DOMアウトライン）
+  preview/              テンプレートを実行して静的HTMLを書き出す仕組み
 docs/
   01-existing-site-findings.md    既存サイトの解析結果
   02-component-inventory.md       独自コンポーネントの棚卸し
@@ -64,6 +67,29 @@ docs/
 
 - WordPress 6.4 以降 / PHP 8.0 以降
 - Advanced Custom Fields **Pro**（フレキシブルコンテンツと繰り返しフィールドを使用）
+
+### ブラウザで見た目を確認する
+
+WordPress を立てずに、テーマの表示を確認できます。
+
+```bash
+php tools/preview/build.php
+open preview/index.html          # ダブルクリックでも可
+```
+
+**静的HTMLを別途手で書くのではなく、テーマの実テンプレート
+（`theme/*.php`）をそのまま実行して書き出しています。** CSSとJSも
+テーマ本体を直接参照するので、プレビューとテーマ出力が乖離しません。
+テンプレートやCSSを変更したら `build.php` を再実行してください。
+
+生成されるのは トップ / 活動について / 入会のご案内 / 理事長あいさつ /
+一覧 / 記事 / 検索結果 / 404 の8画面です。
+
+| 動くもの | 動かないもの |
+|---|---|
+| メインビジュアルのスライダー | 分類タブのAJAX絞り込み（サーバーが必要） |
+| ハンバーガーメニュー | 検索の実行 |
+| レスポンシブ全般 | 画像は生成したプレースホルダ |
 
 ### 解析の実行
 

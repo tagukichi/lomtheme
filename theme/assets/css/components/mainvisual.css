@@ -36,6 +36,8 @@
 
 /* ドット ----------------------------------------------------------------- */
 
+/* 明るい写真の上でも見えるよう、ドットの背後に薄い暗幕を敷く。
+   白いドットだけだと淡色の画像で完全に埋もれる。 */
 .lom-mv__dots {
   position: absolute;
   left: 50%;
@@ -43,6 +45,9 @@
   transform: translateX(-50%);
   display: flex;
   gap: 8px;
+  padding: 7px 12px;
+  border-radius: 9999px;
+  background: rgba(0, 0, 0, 0.32);
 }
 
 .lom-mv__dot {

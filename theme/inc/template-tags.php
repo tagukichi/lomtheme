@@ -79,7 +79,8 @@ function lomtheme_the_thumbnail( string $size = 'lomtheme-card', int $post_id = 
  * トップページは全幅で使うことが多いので既定で非表示。
  */
 function lomtheme_show_sidebar(): bool {
-	if ( is_front_page() ) {
+	// 404 はサイドバーを描画しないので、CSSも読ませない。
+	if ( is_front_page() || is_404() ) {
 		$show = false;
 	} else {
 		$show = true;

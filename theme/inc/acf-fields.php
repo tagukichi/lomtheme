@@ -226,7 +226,7 @@ function lomtheme_register_acf_fields(): void {
 								'name'         => 'text',
 								'type'         => 'textarea',
 								'rows'         => 3,
-								'new_lines'    => 'br',
+								'new_lines'    => '', // 改行の変換はテンプレート側で行う
 								'instructions' => __( '改行はそのまま反映されます。', 'lomtheme' ),
 							),
 						),
